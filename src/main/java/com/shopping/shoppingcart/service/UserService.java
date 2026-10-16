@@ -1,3 +1,4 @@
+
 package com.shopping.shoppingcart.service;
 
 import java.util.List;
@@ -19,8 +20,9 @@ public class UserService {
     // Register User
     public User registerUser(User user) {
 
-    	User existingUser =
-    	        userRepository.findByEmail(user.getEmail()).orElse(null);
+        User existingUser =
+                userRepository.findByEmail(user.getEmail()).orElse(null);
+
         if (existingUser != null) {
             return null;
         }
@@ -35,7 +37,7 @@ public class UserService {
     // Login User
     public User loginUser(String email, String password) {
 
-    	User user = userRepository.findByEmail(email).orElse(null);
+        User user = userRepository.findByEmail(email).orElse(null);
 
         if (user != null && user.getPassword().equals(password)) {
             return user;
@@ -52,5 +54,22 @@ public class UserService {
     // Get User By ID
     public User getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
+    }
+
+    // Update Personal Information
+    public User updateProfile(Long id, User updatedUser) {
+
+        User existingUser = userRepository.findById(id).orElse(null);
+
+        if (existingUser == null) {
+            return null;
+        }
+
+        // Update only the allowed personal information
+        existingUser.setName(updatedUser.getName());
+        existingUser.setPhone(updatedUser.getPhone());
+        existingUser.setAddress(updatedUser.getAddress());
+
+        return userRepository.save(existingUser);
     }
 }

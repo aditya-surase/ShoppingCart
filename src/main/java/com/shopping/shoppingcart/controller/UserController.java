@@ -1,4 +1,5 @@
 package com.shopping.shoppingcart.controller;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.List;
 
@@ -53,5 +54,14 @@ public class UserController {
     public User getUserById(@PathVariable Long id) {
 
         return userService.getUserById(id);
+    }
+    
+ // Update Personal Information
+    @PutMapping("/{id}")
+    public User updateProfile(
+            @PathVariable Long id,
+            @RequestBody User user) {
+
+        return userService.updateProfile(id, user);
     }
 }
