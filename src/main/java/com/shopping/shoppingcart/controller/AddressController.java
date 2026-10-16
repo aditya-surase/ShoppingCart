@@ -19,7 +19,7 @@ import com.shopping.shoppingcart.service.AddressService;
 
 @RestController
 @RequestMapping("/users/{userId}/addresses")
-@CrossOrigin(origins = "*")
+@CrossOrigin("*")
 public class AddressController {
 
     private final AddressService addressService;
