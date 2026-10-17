@@ -36,13 +36,17 @@ public class OrderController {
             return null;
         }
 
-        return new OrderResponse(
-                order.getId(),
-                order.getUser().getId(),
-                order.getOrderDate(),
-                order.getTotalAmount(),
-                order.getStatus()
-        );
+
+return new OrderResponse(
+        order.getId(),
+        order.getUser().getId(),
+        order.getOrderDate(),
+        order.getTotalAmount(),
+        order.getStatus(),
+        order.getPaymentMethod(),
+        order.getPaymentStatus()
+);
+
     }
 
     // Get user's orders

@@ -213,6 +213,10 @@ public class OrderService {
         order.setTotalAmount(totalAmount);
 
         order.setStatus("PENDING");
+        
+        order.setPaymentMethod("COD");
+        
+        order.setPaymentStatus("PENDING");
 
         order = orderRepository.save(order);
 

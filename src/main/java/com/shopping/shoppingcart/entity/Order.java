@@ -1,14 +1,14 @@
+
 package com.shopping.shoppingcart.entity;
 
 import java.time.LocalDateTime;
-
-import jakarta.persistence.Table;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "orders")
@@ -26,6 +26,12 @@ public class Order {
     private double totalAmount;
 
     private String status;
+
+    // New payment fields
+    private String paymentMethod;
+
+    private String paymentStatus;
+    
 
     public Order() {
     }
@@ -79,14 +85,31 @@ public class Order {
         this.status = status;
     }
 
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public String getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", user=" + user +
                 ", orderDate=" + orderDate +
                 ", totalAmount=" + totalAmount +
                 ", status='" + status + '\'' +
+                ", paymentMethod='" + paymentMethod + '\'' +
+                ", paymentStatus='" + paymentStatus + '\'' +
                 '}';
     }
 }
